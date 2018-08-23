@@ -1,21 +1,27 @@
 all:
   hosts:
     win-v10-01:
-      vagrant_box: MSEDGE_Win10
       ansible_host: lpxmn035.rcoffice.ringcentral.com
-      ansible_port: 59861
+      ansible_port: 59851
+
+      vagrant_box: MSEDGE_Win10
       ssh_port: 22001
+      winrm_http_port: 59851
+      winrm_https_port: 59861
 
     win-v10-02:
-      vagrant_box: MSEDGE_Win10
       ansible_host: lpxmn035.rcoffice.ringcentral.com
-      ansible_port: 59862
+      ansible_port: 59852
+        
+      vagrant_box: MSEDGE_Win10
       ssh_port: 22002
+      winrm_http_port: 59852
+      winrm_https_port: 59862
 
   vars:
-    ansible_user:  IEUser
+    ansible_connection: winrm
+    ansible_user: IEUser
     ansible_password: Passw0rd!
-    ansible_winrm_transport: basic
+     
+    ansible_winrm_scheme: http
     ansible_winrm_server_cert_validation: ignore
-
-

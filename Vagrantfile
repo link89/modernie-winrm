@@ -32,7 +32,8 @@ Vagrant.configure("2") do |config|
       srv.vm.guest = :windows
       srv.vm.network :forwarded_port, guest: 22, host: 2222, id: 'ssh', disabled: 'true'
       srv.vm.network :forwarded_port, guest: 22, host: details['ssh_port']
-      srv.vm.network :forwarded_port, guest: 5986, host: details['ansible_port']
+      srv.vm.network :forwarded_port, guest: 5985, host: details['winrm_http_port'], id: 'winrm_http'
+      srv.vm.network :forwarded_port, guest: 5986, host: details['winrm_https_port'], id: 'winrm_https'
 
       srv.vm.communicator = :winrm       if provisioned?
       srv.winrm.username = "IEUser"      if provisioned?
