@@ -18,13 +18,7 @@ require_relative 'ie-box-automation-plugin.rb'
 
 Vagrant.configure("2") do |config|
 
-  # WIN7 - IE11
-  config.vm.box = "microsoft.ie/ie11.win7"
-  config.vm.box_url = "file://IE11 - Win7.box"
-  
-  # Windows 10 Stable - MS Edge
-  #config.vm.box = "microsoft.ie/msedge.win10stable"
-  #config.vm.box_url = "file://dev-msedge.box"
+  config.vm.box = "MSEDGE_Win10"
   
   config.vm.boot_timeout = 5000
 
@@ -50,7 +44,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
      # Display the VirtualBox GUI when booting the machine
-     vb.gui = true
+     vb.gui = false
 
      # Customize the amount of memory on the VM:
      vb.memory = "2048"
