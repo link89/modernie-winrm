@@ -1,0 +1,9 @@
+---
+- name: provision selenium node
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: install jdk
+      win_package:
+        path: http://xmn145.rcoffice.ringcentral.com:9003/selenium-grid/jdk-8u181-windows-x64.exe
+        arguments: /s
