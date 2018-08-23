@@ -1,0 +1,4 @@
+all:
+  hosts:
+    win-v10-01:
+      vagrant_box: MSEDGE_Win10
