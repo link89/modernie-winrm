@@ -2,3 +2,20 @@ all:
   hosts:
     win-v10-01:
       vagrant_box: MSEDGE_Win10
+      ansible_host: lpxmn035.rcoffice.ringcentral.com
+      ansible_port: 59861
+      ssh_port: 22001
+
+    win-v10-02:
+      vagrant_box: MSEDGE_Win10
+      ansible_host: lpxmn035.rcoffice.ringcentral.com
+      ansible_port: 59862
+      ssh_port: 22002
+
+  vars:
+    ansible_user:  IEUser
+    ansible_password: Passw0rd!
+    ansible_winrm_transport: basic
+    ansible_winrm_server_cert_validation: ignore
+
+

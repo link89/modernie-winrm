@@ -19,7 +19,8 @@ require 'yaml'
 require_relative 'ie-box-automation-plugin.rb'
 
 inventory = YAML.load_file('inventory.yml')
-
+total_hosts_count = inventory['all']['hosts'].keys.count
+current_host = 1
 
 Vagrant.configure("2") do |config|
 
@@ -29,7 +30,9 @@ Vagrant.configure("2") do |config|
       srv.vm.boot_timeout = 5000
 
       srv.vm.guest = :windows
-      srv.vm.hostname = server
+      srv.vm.network :forwarded_port, guest: 22, host: 2222, id: 'ssh', disabled: 'true'
+      srv.vm.network :forwarded_port, guest: 22, host: details['ssh_port']
+      srv.vm.network :forwarded_port, guest: 5986, host: details['ansible_port']
 
       srv.vm.communicator = :winrm       if provisioned?
       srv.winrm.username = "IEUser"      if provisioned?
@@ -40,11 +43,11 @@ Vagrant.configure("2") do |config|
 
       srv.ssh.username = "IEUser"
       srv.ssh.password = "Passw0rd!"
+      srv.ssh.port = details['ssh_port']
       srv.ssh.insert_key = false
       srv.vbguest.auto_update = false
 
       srv.vm.box_check_update = false
-
       srv.vm.synced_folder ".", "/vagrant", disabled: true                     if not provisioned?
       srv.vm.synced_folder "./ExtraFolder", "c:/ExtraFolder", create: false    if provisioned?
 

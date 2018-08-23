@@ -110,7 +110,7 @@ module LocalCommand
                                 puts 'The VM is not running. Next command should be vagrant up...'
                             end
                         end
-                        sleep(50)
+                        sleep(10)
                     rescue Exception => e
                         $done = true
                         puts 'Exception...'
