@@ -1,0 +1,35 @@
+---
+- name: provision selenium node
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: make absolutely sure the connection is active
+      wait_for_connection:
+
+    - name: install jdk
+      win_package:
+        path: http://xmn145.rcoffice.ringcentral.com:9003/selenium-grid/jdk-8u181-windows-x64.exe
+        product_id: '{4A03706F-666A-4037-7777-5F2748764D10}'
+        arguments: /s
+
+    - name: install chrome
+      win_package:
+        path: 
+        arguments: /s
+
+    - name: create selenium workspace for everything
+      win_file:
+    
+    - name: add selenium workspace to PATH
+      win_environment:
+      
+    - name: install webdriver for IE11 and Edge
+      win_get_url:
+
+    - name: install selenium grid jar
+      win_get_url:
+
+    - name: put selenium grid node config to workspace
+      win_copy:
+
+    - name: 

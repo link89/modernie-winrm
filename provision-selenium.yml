@@ -3,7 +3,11 @@
   hosts: all
   gather_facts: no
   tasks:
+    - name: make absolutely sure the connection is active
+      wait_for_connection:
+
     - name: install jdk
       win_package:
         path: http://xmn145.rcoffice.ringcentral.com:9003/selenium-grid/jdk-8u181-windows-x64.exe
+        product_id: '{4A03706F-666A-4037-7777-5F2748764D10}'
         arguments: /s
